@@ -3,207 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROBIN HOOD</title>
+    <title>ROBIN HOOD // DIRECTORY</title>
     <style>
         :root {
             --win-gray: #c0c0c0;
-            --paper-white: #ffffff;
-            --hood-gold: #c69438; 
-            --link-blue: #0000ee;
+            --tkp-red: #cc0000;
+            --hood-gold: #c69438;
+            --bg-teal: #008080;
         }
 
         body {
-            background-color: #333;
-            font-family: "Tahoma", "Arial", sans-serif;
+            background-color: var(--bg-teal);
+            font-family: "Tahoma", sans-serif;
             margin: 0;
             padding: 40px 20px;
             display: flex;
             justify-content: center;
         }
 
+        /* The Window - Box remains, Title Bar is gone */
         .window {
             background: var(--win-gray);
             width: 100%;
-            max-width: 900px;
+            max-width: 800px;
             border: 2px outset #fff;
-            box-shadow: 12px 12px 0px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
+            box-shadow: 6px 6px 0px #000;
         }
 
-        .title-bar {
-            background: linear-gradient(90deg, #222, #555);
-            padding: 3px 6px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: #fff;
-            font-weight: bold;
-            font-size: 11px;
-            letter-spacing: 1px;
-        }
-
+        /* The Header Area: Industrial & Soviet */
         header {
-            padding: 30px 20px; /* Reduced padding for tall logo */
-            text-align: center;
-            background: var(--paper-white);
+            background: #fff;
             margin: 10px;
             border: 2px inset #fff;
+            padding: 35px;
+            display: grid;
+            grid-template-columns: 1fr 180px;
+            align-items: center;
             position: relative;
+            overflow: hidden;
         }
 
-        .project-stamp {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-family: "Arial Black", sans-serif;
-            font-size: 9px;
-            color: #ccc;
+        .branding-text {
+            border-left: 8px solid var(--tkp-red);
+            padding-left: 20px;
+        }
+
+        /* Y2K Soviet Typographic Logo */
+        .logo-font {
+            font-family: "Impact", "Arial Black", sans-serif;
+            font-size: 58px;
+            line-height: 0.9;
+            color: #000;
+            letter-spacing: -2px;
             text-transform: uppercase;
-            border: 1px solid #eee;
-            padding: 2px 5px;
+            margin: 0;
         }
 
-        /* Adjusted for the 896 x 1195 vertical logo */
-        .hood-logo {
-            max-height: 250px; /* Constrains height to keep it from dominating the screen */
-            width: auto;       /* Maintains aspect ratio */
-            margin-bottom: 20px;
+        .logo-font span {
+            color: var(--tkp-red);
         }
 
         .mission-statement {
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 13px;
-            color: #000;
+            font-size: 12px;
+            margin-top: 12px;
             font-weight: bold;
+            color: #333;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
         }
 
-        .nav-stats {
-            background: #d4d4d4;
-            padding: 4px 12px;
-            font-size: 10px;
+        /* Your logo as the official physical seal */
+        .logo-stamp {
+            width: 150px;
+            height: auto;
+            filter: grayscale(1) contrast(1.4); 
+            opacity: 0.9;
+            transform: rotate(4deg);
+        }
+
+        .all4you-mark {
+            position: absolute;
+            top: 10px;
+            right: 15px;
             font-family: monospace;
-            border-bottom: 1px solid #999;
-            color: #333;
+            font-size: 10px;
+            font-weight: bold;
+            color: #bbb;
+            text-transform: uppercase;
         }
 
+        /* Functional Archive List */
         main {
-            background: var(--paper-white);
+            background: #fff;
             margin: 0 10px 10px;
             border: 2px inset #fff;
-            min-height: 200px;
         }
 
-        .archive-table {
-            width: 100%;
-            border-collapse: collapse;
+        .file-row {
+            display: flex;
+            border-bottom: 1px solid #c0c0c0;
+            transition: background 0.1s;
+            text-decoration: none;
+            color: #000;
         }
 
-        .archive-table th {
-            text-align: left;
-            background: var(--hood-gold);
-            color: white;
-            padding: 8px 12px;
-            text-transform: uppercase;
-            font-size: 10px;
-            letter-spacing: 1px;
+        /* Hover effect: The 'Soviet Selection' */
+        .file-row:hover {
+            background: var(--tkp-red);
+            color: #fff !important;
         }
 
-        .archive-row td {
-            padding: 20px 15px;
-            border-bottom: 1px solid #f0f0f0;
-            vertical-align: top;
-        }
+        .file-row:hover .file-desc { color: #eee; }
+        .file-row:hover .file-id { border-color: #fff; color: #fff; }
 
-        .cat-tag {
+        .file-id {
+            padding: 15px;
             font-family: monospace;
-            font-size: 10px;
+            font-size: 12px;
             font-weight: bold;
-            color: var(--hood-gold);
-            border: 1px solid var(--hood-gold);
-            padding: 2px 6px;
+            border-right: 1px solid #c0c0c0;
+            display: flex;
+            align-items: center;
+            min-width: 60px;
+            justify-content: center;
         }
 
-        .entry-link {
+        .file-info {
+            padding: 15px;
+            flex-grow: 1;
+        }
+
+        .file-name {
             font-weight: bold;
             font-size: 18px;
-            text-decoration: none;
-            color: var(--link-blue);
-            display: inline-block;
-            margin-bottom: 6px;
+            display: block;
+            margin-bottom: 4px;
+            text-transform: uppercase;
         }
 
-        .entry-link:hover {
-            text-decoration: underline;
-        }
-
-        .entry-desc {
-            font-size: 13px;
-            color: #333;
+        .file-desc {
+            font-size: 12px;
+            color: #666;
             line-height: 1.4;
         }
 
         footer {
-            padding: 20px;
-            text-align: center;
+            padding: 15px;
             font-size: 10px;
-            background: var(--win-gray);
-            border-top: 1px solid #999;
-            color: #666;
-            letter-spacing: 0.5px;
+            text-align: center;
+            color: #444;
+            border-top: 1px solid #808080;
+            font-weight: bold;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
 <div class="window">
-    <div class="title-bar">
-        <span>ROBIN HOOD // MASTER DIRECTORY</span>
-        <div style="font-family: monospace;">[ _ □ X ]</div>
-    </div>
-
     <header>
-        <div class="project-stamp">An all4you project</div>
-        <img src="robin_hood_logo.png" class="hood-logo" alt="ROBIN HOOD">
-        <div class="mission-statement">
-            Archive directory for the restoration of common cultural property.
+        <div class="all4you-mark">An all4you project</div>
+        
+        <div class="branding-text">
+            <h1 class="logo-font">ROBIN<br><span>HOOD</span></h1>
+            <div class="mission-statement">Common Goods Distribution Hub</div>
         </div>
+
+        <img src="image_39801e.png" class="logo-stamp" alt="Seal">
     </header>
 
-    <div class="nav-stats">
-        INDEX_COUNT: 1 | BROWSE: PUBLIC_ACCESS
-    </div>
-
     <main>
-        <table class="archive-table">
-            <thead>
-                <tr>
-                    <th style="width: 130px;">Classification</th>
-                    <th>Resource Metadata</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="archive-row">
-                    <td><span class="cat-tag">MEDIA_FILES</span></td>
-                    <td>
-                        <a href="https://istanbul-index.link" class="entry-link">The Istanbul Index</a>
-                        <div class="entry-desc">
-                            Passive directory for cinematic and television media. Operates as a public access library for global transmissions.
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <a href="https://istanbul-index.link" class="file-row">
+            <div class="file-id">001</div>
+            <div class="file-info">
+                <span class="file-name">The Istanbul Index</span>
+                <span class="file-desc">Automated media repository. Passive directory of cultural transmissions.</span>
+            </div>
+        </a>
+
+        <div class="file-row" style="opacity: 0.4; cursor: default;">
+            <div class="file-id">002</div>
+            <div class="file-info">
+                <span class="file-name">Record Pending</span>
+                <span class="file-desc">Resource undergoing verification. Access restricted.</span>
+            </div>
+        </div>
     </main>
 
     <footer>
-        ROBIN HOOD DIRECTIVE &copy; 2026. <br>
-        Independent repository for the reclamation of digital assets.
+        &copy; 2026 ROBIN HOOD // RECLAIM THE COMMONS
     </footer>
 </div>
 
