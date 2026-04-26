@@ -8,6 +8,7 @@
         :root {
             --win-gray: #c0c0c0;
             --tkp-red: #cc0000;
+            --hood-gold: #c69438;
             --bg-teal: #008080;
         }
 
@@ -20,14 +21,16 @@
             justify-content: center;
         }
 
+        /* The Window - Box remains, Title Bar is gone */
         .window {
             background: var(--win-gray);
             width: 100%;
-            max-width: 850px;
+            max-width: 800px;
             border: 2px outset #fff;
             box-shadow: 6px 6px 0px #000;
         }
 
+        /* The Header Area: Industrial & Soviet */
         header {
             background: #fff;
             margin: 10px;
@@ -45,6 +48,7 @@
             padding-left: 20px;
         }
 
+        /* Y2K Soviet Typographic Logo */
         .logo-font {
             font-family: "Impact", "Arial Black", sans-serif;
             font-size: 58px;
@@ -68,6 +72,7 @@
             letter-spacing: 1px;
         }
 
+        /* Your logo as the official physical seal */
         .logo-stamp {
             width: 150px;
             height: auto;
@@ -87,18 +92,12 @@
             text-transform: uppercase;
         }
 
+        /* Functional Archive List */
         main {
             background: #fff;
             margin: 0 10px 10px;
             border: 2px inset #fff;
-            max-height: 500px; /* Limits height so it's a scrollable archive */
-            overflow-y: scroll;
         }
-
-        /* Custom scrollbar to match the vibe */
-        main::-webkit-scrollbar { width: 16px; }
-        main::-webkit-scrollbar-track { background: #dfdfdf; border-left: 1px solid #808080; }
-        main::-webkit-scrollbar-thumb { background: #c0c0c0; border: 2px outset #fff; }
 
         .file-row {
             display: flex;
@@ -108,6 +107,7 @@
             color: #000;
         }
 
+        /* Hover effect: The 'Soviet Selection' */
         .file-row:hover {
             background: var(--tkp-red);
             color: #fff !important;
@@ -117,35 +117,34 @@
         .file-row:hover .file-id { border-color: #fff; color: #fff; }
 
         .file-id {
-            padding: 12px;
+            padding: 15px;
             font-family: monospace;
             font-size: 12px;
             font-weight: bold;
             border-right: 1px solid #c0c0c0;
             display: flex;
             align-items: center;
-            min-width: 50px;
+            min-width: 60px;
             justify-content: center;
         }
 
         .file-info {
-            padding: 12px;
+            padding: 15px;
             flex-grow: 1;
         }
 
         .file-name {
             font-weight: bold;
-            font-size: 16px;
+            font-size: 18px;
             display: block;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
             text-transform: uppercase;
         }
 
         .file-desc {
-            font-size: 11px;
+            font-size: 12px;
             color: #666;
-            font-family: monospace;
-            word-break: break-all;
+            line-height: 1.4;
         }
 
         footer {
@@ -164,15 +163,17 @@
 <div class="window">
     <header>
         <div class="all4you-mark">An all4you project</div>
+        
         <div class="branding-text">
             <h1 class="logo-font">ROBIN<br><span>HOOD</span></h1>
             <div class="mission-statement">Common Goods Distribution Hub</div>
         </div>
+
         <img src="image_39801e.png" class="logo-stamp" alt="Seal">
     </header>
 
     <main>
-        <a href="https://istanbul-index.link" class="file-row">
+        <a href="https://index.istan.to/" class="file-row">
             <div class="file-id">001</div>
             <div class="file-info">
                 <span class="file-name">The Istanbul Index</span>
@@ -180,35 +181,13 @@
             </div>
         </a>
 
-        <script>
-            const main = document.querySelector('main');
-            const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-            
-            function genString(length) {
-                let result = '';
-                for (let i = 0; i < length; i++) {
-                    result += chars.charAt(Math.floor(Math.random() * chars.length));
-                }
-                return result;
-            }
-
-            for (let i = 2; i <= 40; i++) {
-                let id = i.toString().padStart(3, '0');
-                let row = document.createElement('div');
-                row.className = 'file-row';
-                row.style.opacity = "0.5";
-                row.style.cursor = "default";
-                
-                row.innerHTML = `
-                    <div class="file-id">${id}</div>
-                    <div class="file-info">
-                        <span class="file-name">${genString(12)}</span>
-                        <span class="file-desc">${genString(24)}</span>
-                    </div>
-                `;
-                main.appendChild(row);
-            }
-        </script>
+        <div class="file-row" style="opacity: 0.4; cursor: default;">
+            <div class="file-id">002</div>
+            <div class="file-info">
+                <span class="file-name">Record Pending</span>
+                <span class="file-desc">Resource undergoing verification. Access restricted.</span>
+            </div>
+        </div>
     </main>
 
     <footer>
