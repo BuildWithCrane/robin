@@ -44,7 +44,7 @@
         }
 
         header {
-            padding: 50px 20px;
+            padding: 30px 20px; /* Reduced padding for tall logo */
             text-align: center;
             background: var(--paper-white);
             margin: 10px;
@@ -64,10 +64,11 @@
             padding: 2px 5px;
         }
 
+        /* Adjusted for the 896 x 1195 vertical logo */
         .hood-logo {
-            max-width: 280px;
-            height: auto;
-            margin-bottom: 25px;
+            max-height: 250px; /* Constrains height to keep it from dominating the screen */
+            width: auto;       /* Maintains aspect ratio */
+            margin-bottom: 20px;
         }
 
         .mission-statement {
@@ -95,7 +96,7 @@
             background: var(--paper-white);
             margin: 0 10px 10px;
             border: 2px inset #fff;
-            min-height: 300px;
+            min-height: 200px;
         }
 
         .archive-table {
@@ -168,7 +169,7 @@
 
     <header>
         <div class="project-stamp">An all4you project</div>
-        <img src="robin_hood_logo.png" class="hood-logo" alt="ROBIN HOOD">
+        <img src="image_39801e.png" class="hood-logo" alt="ROBIN HOOD">
         <div class="mission-statement">
             Archive directory for the restoration of common cultural property.
         </div>
@@ -190,13 +191,13 @@
                 <tr class="archive-row">
                     <td><span class="cat-tag">MEDIA_FILES</span></td>
                     <td>
-                        <a href="https://index.istan.to/" class="entry-link">The Istanbul Index</a>
+                        <a href="https://istanbul-index.link" class="entry-link">The Istanbul Index</a>
                         <div class="entry-desc">
                             Passive directory for cinematic and television media. Operates as a public access library for global transmissions.
                         </div>
                     </td>
                 </tr>
-                </tbody>
+            </tbody>
         </table>
     </main>
 
