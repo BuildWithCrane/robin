@@ -2,133 +2,153 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ROBIN HOOD</title>
+    <title>Robin Hood Index</title>
     <style>
-        /* 90s Brutalist/Minimalist Style */
+        /* Strict Archivist Aesthetic */
         body {
             background-color: #ffffff;
             color: #000000;
-            font-family: "Arial", "Helvetica", sans-serif;
+            font-family: "Helvetica", "Arial", sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
 
-        .wrapper {
-            max-width: 900px;
+        .container {
+            width: 100%;
+            max-width: 960px;
             margin: 0 auto;
+            padding: 60px 20px;
         }
 
-        #logo-container {
+        header {
             text-align: center;
-            padding: 40px 0;
+            border-bottom: 2px solid #000;
+            padding-bottom: 40px;
+            margin-bottom: 40px;
         }
 
         #logo {
-            width: 700px; /* Big impact as requested */
+            width: 600px;
             height: auto;
-            border: none;
+            display: block;
+            margin: 0 auto;
         }
 
-        .project-credit {
-            font-size: 12px;
+        .branding {
+            margin-top: 20px;
+            font-size: 14px;
             font-weight: bold;
             text-transform: uppercase;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #000;
-            display: inline-block;
+            letter-spacing: 2px;
         }
 
-        /* The Index Table */
+        /* Navigation */
+        nav {
+            margin-bottom: 40px;
+            font-size: 13px;
+        }
+
+        nav a {
+            color: #000;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* The Directory */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
         }
 
         th {
-            background-color: #000;
-            color: #fff;
             text-align: left;
-            padding: 8px 12px;
-            font-size: 13px;
-            letter-spacing: 1px;
+            font-size: 12px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #000;
+            padding: 10px 5px;
         }
 
         td {
-            padding: 12px;
-            border: 1px solid #000;
-            font-size: 14px;
+            padding: 20px 5px;
+            border-bottom: 1px solid #e5e5e5;
+            vertical-align: top;
         }
 
-        /* Direct Link Styling */
-        .dir-link {
+        .item-name {
+            font-size: 18px;
             font-weight: bold;
-            color: #0000ff;
+            color: #0000ee;
             text-decoration: none;
         }
 
-        .dir-link:hover {
-            background-color: #000;
-            color: #fff;
-            text-decoration: none;
+        .item-name:hover {
+            text-decoration: underline;
         }
 
-        .description {
+        .item-desc {
+            font-size: 14px;
             color: #333;
+            margin-top: 4px;
         }
 
-        .type-cell {
-            font-family: "Courier New", Courier, monospace;
+        .item-meta {
+            font-family: monospace;
             font-size: 12px;
-            text-align: center;
-            width: 80px;
+            text-align: right;
         }
 
         footer {
-            margin-top: 40px;
-            font-size: 11px;
-            color: #666;
-            text-align: center;
-            border-top: 1px solid #ccc;
-            padding-top: 10px;
+            margin-top: 100px;
+            padding-top: 20px;
+            border-top: 1px solid #000;
+            font-size: 12px;
+        }
+
+        .all4you {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        
-        <div id="logo-container">
-            <img src="robinhood.png" alt="ROBIN HOOD" id="logo">
-        </div>
+    <div class="container">
+        <header>
+            <img src="robinhood.png" alt="Robin Hood" id="logo">
+            <div class="branding">Robin Hood Archive</div>
+        </header>
 
-        <div class="project-credit">
-            An all4you project
-        </div>
+        <nav>
+            <a href="#">Movies</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Info</a>
+        </nav>
 
         <table>
             <thead>
                 <tr>
-                    <th>NAME</th>
-                    <th>DESCRIPTION</th>
-                    <th>TYPE</th>
+                    <th>Entry Name</th>
+                    <th style="text-align: right;">Type</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>
-                        <a href="https://index.istan.to/" class="dir-link">The Istanbul Index</a>
+                        <a href="YOUR_LINK_HERE" class="item-name">The Istanbul Index</a>
+                        <div class="item-desc">Movies, TV, and more</div>
                     </td>
-                    <td class="description">Movies, TV, and more</td>
-                    <td class="type-cell">[DIR]</td>
+                    <td class="item-meta">INDEX</td>
                 </tr>
             </tbody>
         </table>
 
         <footer>
-            ROBIN HOOD INDEX
+            <span class="all4you">An all4you project</span>
         </footer>
-
     </div>
 
 </body>
