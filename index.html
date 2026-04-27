@@ -34,7 +34,6 @@
             box-shadow: 20px 20px 0px rgba(0,0,0,0.3);
         }
 
-        /* The Red Beret Bar */
         .top-accent {
             background: var(--beret-red);
             height: 20px;
@@ -75,16 +74,8 @@
             mix-blend-mode: multiply;
         }
 
-        .stencil-logo span {
-            position: relative;
-            z-index: 2;
-        }
-
-        .stencil-logo .four {
-            color: var(--star-gold);
-            font-style: italic;
-            margin: 0 2px;
-        }
+        .stencil-logo span { position: relative; z-index: 2; }
+        .stencil-logo .four { color: var(--star-gold); font-style: italic; margin: 0 2px; }
 
         .subtitle {
             font-size: 13px;
@@ -98,9 +89,12 @@
         }
 
         main {
-            padding: 60px 40px;
+            padding: 40px;
             background-image: radial-gradient(var(--ink) 0.5px, transparent 0.5px);
             background-size: 10px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
 
         .resource-link {
@@ -109,7 +103,7 @@
             text-decoration: none;
             color: var(--ink);
             border: 6px solid var(--ink);
-            padding: 40px;
+            padding: 30px;
             background: #fff;
             transition: all 0.1s;
             position: relative;
@@ -123,36 +117,36 @@
 
         .link-title {
             font-family: "Impact", sans-serif;
-            font-size: 38px;
+            font-size: 32px;
             text-transform: uppercase;
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             letter-spacing: -1px;
         }
 
         .link-desc {
-            font-size: 15px;
-            line-height: 1.6;
+            font-size: 14px;
+            line-height: 1.5;
             font-weight: bold;
-            max-width: 400px;
+            max-width: 450px;
         }
 
         .star-seal {
             position: absolute;
-            top: -25px;
-            right: -25px;
+            top: -15px;
+            right: -15px;
             background: var(--star-gold);
-            width: 60px;
-            height: 60px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
-            border: 6px solid var(--ink);
+            font-size: 24px;
+            border: 4px solid var(--ink);
             transform: rotate(15deg);
         }
 
-        /* POPUP STYLING */
+        /* WARNING POPUP */
         #warning-overlay {
             display: none;
             position: fixed;
@@ -170,21 +164,17 @@
             max-width: 450px;
             padding: 35px;
             box-shadow: 15px 15px 0px var(--ink);
-            position: relative;
         }
 
         .warning-text {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: bold;
             line-height: 1.6;
             margin-bottom: 25px;
             text-transform: uppercase;
         }
 
-        .warning-btns {
-            display: flex;
-            gap: 15px;
-        }
+        .warning-btns { display: flex; gap: 15px; }
 
         .btn {
             flex: 1;
@@ -211,9 +201,7 @@
             justify-content: space-between;
         }
 
-        .inventory-count {
-            color: var(--star-gold);
-        }
+        .inventory-count { color: var(--star-gold); }
     </style>
 </head>
 <body>
@@ -229,7 +217,7 @@
     </header>
 
     <main>
-        <div class="resource-link" onclick="triggerWarning()">
+        <div class="resource-link" onclick="triggerWarning('https://index.istan.to/')">
             <div class="star-seal">★</div>
             <span class="link-title">The Istanbul Index</span>
             <span class="link-desc">
@@ -237,39 +225,56 @@
                 Restored cultural property.
             </span>
         </div>
+
+        <div class="resource-link" onclick="triggerWarning('https://alexandria.justlearning.net/')">
+            <div class="star-seal">★</div>
+            <span class="link-title">Alexandria Archive</span>
+            <span class="link-desc">
+                High-fidelity repository of literary records. 
+                Full browser-decryption for direct reading.
+            </span>
+        </div>
     </main>
 
     <footer>
         <span>all4you // 2026</span>
-        <span class="inventory-count">Inv: 001</span>
+        <span class="inventory-count">Inv: 002</span>
     </footer>
 </div>
 
 <div id="warning-overlay">
     <div class="warning-box">
-        <div class="warning-text">
+        <div class="warning-text" id="warning-content">
             The creator of this index heavily advises you to use a strong content blocker. The Registry is not responsible for the predatory nature of external ad-servers.
         </div>
         <div class="warning-btns">
             <button class="btn btn-abort" onclick="closeWarning()">Back</button>
-            <button class="btn btn-proceed" onclick="proceed()">Proceed</button>
+            <button class="btn btn-proceed" id="proceed-btn">Proceed</button>
         </div>
     </div>
 </div>
 
 <script>
     const overlay = document.getElementById('warning-overlay');
+    const proceedBtn = document.getElementById('proceed-btn');
+    const warningText = document.getElementById('warning-content');
     
-    function triggerWarning() {
+    function triggerWarning(destination) {
+        // Customize warning if necessary based on link
+        if(destination.includes('istan.to')) {
+            warningText.innerText = "The creator of this index heavily advises you to use a strong content blocker. The Registry is not responsible for the predatory nature of external ad-servers.";
+        } else {
+            warningText.innerText = "You are entering the Alexandria Archive. High-volume document decryption may impact browser performance on older terminals.";
+        }
+
         overlay.style.display = 'flex';
+        proceedBtn.onclick = function() {
+            window.location.href = destination;
+        };
     }
 
     function closeWarning() {
         overlay.style.display = 'none';
-    }
-
-    function proceed() {
-        window.location.href = "https://index.istan.to/";
     }
 </script>
 
