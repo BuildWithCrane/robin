@@ -225,20 +225,11 @@
                 Restored cultural property.
             </span>
         </div>
-
-        <div class="resource-link" onclick="triggerWarning('https://alexandria.spottt.com/')">
-            <div class="star-seal">★</div>
-            <span class="link-title">Alexandria Archive</span>
-            <span class="link-desc">
-                High-fidelity repository of literary records. 
-                Full browser-decryption for direct reading.
-            </span>
-        </div>
     </main>
 
     <footer>
         <span>all4you // 2026</span>
-        <span class="inventory-count">Inv: 002</span>
+        <span class="inventory-count">Inv: 001</span>
     </footer>
 </div>
 
@@ -253,30 +244,6 @@
         </div>
     </div>
 </div>
-
-<script>
-    const overlay = document.getElementById('warning-overlay');
-    const proceedBtn = document.getElementById('proceed-btn');
-    const warningText = document.getElementById('warning-content');
-    
-    function triggerWarning(destination) {
-        // Customize warning if necessary based on link
-        if(destination.includes('istan.to')) {
-            warningText.innerText = "The creator of this index heavily advises you to use a strong content blocker. The Registry is not responsible for the predatory nature of external ad-servers.";
-        } else {
-            warningText.innerText = "You are entering the Alexandria Archive. High-volume document decryption may impact browser performance on older terminals.";
-        }
-
-        overlay.style.display = 'flex';
-        proceedBtn.onclick = function() {
-            window.location.href = destination;
-        };
-    }
-
-    function closeWarning() {
-        overlay.style.display = 'none';
-    }
 </script>
-
 </body>
 </html>
