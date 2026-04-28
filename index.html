@@ -199,9 +199,25 @@
             letter-spacing: 2px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         .inventory-count { color: var(--star-gold); }
+        
+        /* Subtle Legal Link */
+        .legal-anchor {
+            color: inherit; 
+            text-decoration: none; 
+            opacity: 0.2; 
+            cursor: help;
+            margin-left: 5px;
+        }
+        .legal-anchor:hover { opacity: 1; color: var(--star-gold); }
+
+        @media (max-width: 450px) {
+            .stencil-logo { font-size: 60px; }
+            header { padding: 30px 20px; }
+        }
     </style>
 </head>
 <body>
@@ -228,22 +244,51 @@
     </main>
 
     <footer>
-    <span>all4you // 2026 [<a href="legal" style="color: inherit; text-decoration: none; opacity: 0.3; cursor: help;">§</a>]</span>
-    <span class="inventory-count">Inv: 001</span>
-</footer>
+        <span>all4you // 2026<a href="https://star.all4you.ru/legal" class="legal-anchor">§</a></span>
+        <span class="inventory-count">Inv: 001</span>
+    </footer>
 </div>
 
 <div id="warning-overlay">
     <div class="warning-box">
-        <div class="warning-text" id="warning-content">
-            The creator of this index heavily advises you to use a strong content blocker. The Registry is not responsible for the predatory nature of external ad-servers.
+        <div class="warning-text">
+            By proceeding, you agree that you are accessing external resources at your own risk. all4you is a directory service and holds no responsibility for third-party content or legal implications in your region. Use of a strong content blocker is advised.
         </div>
         <div class="warning-btns">
-            <button class="btn btn-abort" onclick="closeWarning()">Back</button>
-            <button class="btn btn-proceed" id="proceed-btn">Proceed</button>
+            <button class="btn btn-abort" onclick="closeWarning()">Abort</button>
+            <button class="btn btn-proceed" id="proceed-btn">I Understand</button>
         </div>
     </div>
 </div>
+
+<script>
+    let pendingUrl = "";
+
+    function triggerWarning(url) {
+        pendingUrl = url;
+        document.getElementById('warning-overlay').style.display = 'flex';
+    }
+
+    function closeWarning() {
+        document.getElementById('warning-overlay').style.display = 'none';
+        pendingUrl = "";
+    }
+
+    document.getElementById('proceed-btn').addEventListener('click', function() {
+        if (pendingUrl) {
+            window.open(pendingUrl, '_blank');
+            closeWarning();
+        }
+    });
+
+    // Close overlay if user clicks outside the warning box
+    window.onclick = function(event) {
+        let overlay = document.getElementById('warning-overlay');
+        if (event.target == overlay) {
+            closeWarning();
+        }
+    }
 </script>
+
 </body>
 </html>
